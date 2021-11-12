@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { AppConfigContextProvider } from './app/appConfig/AppConfigContextProvider';
+import { createFetchTokenApi } from './app/api/FetchTokenApi';
+import { ApiToken } from './app/api/TokenApi';
+import { FetchApiContextProvider } from './app/appApi/FetchApiContextProvider';
+import { UserPage } from './app/pages/userPage/UserPage';
 
-function App() {
+const tokenApi = createFetchTokenApi();
+
+const App = () => {
+  const [ apiToken, setApiToken ] = useState<ApiToken>();
+
+  useEffect(() => {
+    tokenApi.fetchToken().then((token: ApiToken) => {
+      setApiToken(token);
+    });
+  }, [])
+
+  if(!apiToken) {
+    return <p>App initializing...</p>
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppConfigContextProvider apiToken={ apiToken }>
+      <FetchApiContextProvider>
+        <UserPage />
+      </FetchApiContextProvider>
+  </AppConfigContextProvider>
   );
 }
 
-export default App;
+export { App };

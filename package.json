@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "5.15.0",
-    "@testing-library/react": "11.2.7",
     "@testing-library/user-event": "12.8.3",
     "@types/jest": "26.0.24",
     "@types/node": "12.20.37",
@@ -17,7 +16,9 @@
     "web-vitals": "1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm:start-frontend\" \"npm:start-backend\"",
+    "start-frontend": "react-scripts start",
+    "start-backend": "json-server --port 3001 --watch serverMock.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -39,5 +40,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "12.1.2",
+    "@types/sinon": "10.0.6",
+    "concurrently": "6.3.0",
+    "json-server": "0.17.0",
+    "sinon": "12.0.1"
   }
 }

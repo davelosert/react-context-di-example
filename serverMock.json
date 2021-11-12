@@ -1,0 +1,17 @@
+{
+  "user": [
+    {
+      "id": "uuid1",
+      "firstName": "Bruce",
+      "lastName": "Wayne"
+    },
+    {
+      "id": "uuid2",
+      "firstName": "Selina",
+      "lastName": "Kyle"
+    }
+  ],
+  "token": {
+    "apiToken": "ThisIsAApiToken"
+  }
+}
