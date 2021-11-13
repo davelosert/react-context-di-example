@@ -1,4 +1,4 @@
-import { ApiToken } from "../api/TokenApi";
+import { ApiToken } from '../api/TokenApi';
 
 type Language = 'de-DE' | 'en-US';
 

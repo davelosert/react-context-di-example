@@ -1,5 +1,5 @@
-import { AppApi } from "../app/appApi/AppApi";
-import { createTestUserApi } from "./createTestUserPageApi";
+import { AppApi } from '../app/appApi/AppApi';
+import { createTestUserApi } from './createTestUserPageApi';
 
 const defaultTestAppApi: AppApi = {
   userApi: createTestUserApi()

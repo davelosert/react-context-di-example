@@ -1,7 +1,7 @@
-import { User } from "./User";
+import { User } from './User';
 
 interface UserPageApi {
-  getUsers: () => Promise<User[]>
+  getUsers: () => Promise<User[]>;
 }
 
 export type {
